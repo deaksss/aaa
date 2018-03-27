@@ -1,0 +1,285 @@
+<html>
+<head>
+	 <meta name ="viewport" content="width=device-width, initial-scale=1">
+	 <link rel="stylesheet" type="text/css" href="jquery.mobile-1.4.5.css" />
+	 <script src=jquery.js></script>
+	 <script src=jquery.mobile-1.4.5.js></script>
+	 <script>
+		$(document).ready(function(){
+			$('.target').on('change', function(){
+				var url = $(this).val();
+				window.location = url;
+			});
+		});
+		function raisePower() {
+			document.getElementById("hasil").value = Math.pow(document.getElementById("angka").value,document.getElementById("angka2").value)
+	 	}
+	   	function faktorial() {
+		    document.getElementById("hasilf").value = 1
+		    for (i = 1; i <= document.getElementById("angkaf").value; i++) {
+		       document.getElementById("hasilf").value *= i
+		    }  
+		}
+
+		function rgb(){
+			var n = document.getElementById("rgb").value;
+	        if (n == "") {
+	            alert ("Please try again)");
+	            document.getElementById("rgb").value = "";
+	            document.getElementById("rgb").focus();
+	            return false;
+	        }
+        	document.getElementById("ha1").style.color = n;
+		}
+
+		$( document ).on( "click", ".show-page-loading-msg", function() {
+		    var $this = $( this ),
+					theme = $this.jqmData( "theme" ) || $.mobile.loader.prototype.options.theme,
+					msgText = $this.jqmData( "msgtext" ) || $.mobile.loader.prototype.options.text,
+					textVisible = $this.jqmData( "textvisible" ) || $.mobile.loader.prototype.options.textVisible,
+					textonly = !!$this.jqmData( "textonly" );
+					html = $this.jqmData( "html" ) || "";
+		    $.mobile.loading( "show", {
+					text: msgText,
+					textVisible: textVisible,
+					theme: theme,
+					textonly: textonly,
+					html: html
+    });
+})
+.on( "click", ".hide-page-loading-msg", function() {
+    $.mobile.loading( "hide" );
+});
+	 </script>
+
+	 <style type="text/css">
+        
+        /* Basic styles */
+        .rwd-example .ui-body {
+            text-align: left;
+            border-color: #ddd;
+        }
+        .rwd-example p {
+            color: #777;
+            line-height: 140%
+        }
+        /* Stack all blocks to start */
+        .rwd-example .ui-block-a,
+        .rwd-example .ui-block-b{
+            width: 100%;
+            float: none;
+        }
+        /* Collapsing borders */
+        .rwd-example > div + div .ui-body {
+            border-top-width: 0;
+        }
+        /* 1st breakpoint - Float B and C, leave A full width on top */
+        @media all and (min-width: 42em) {
+            .rwd-example {
+                overflow: hidden; /* Use this or a "clearfix" to give the container height */
+            }
+            .rwd-example .ui-body {
+               min-height: 14em;
+            }
+            .rwd-example .ui-block-b{
+              float: left;
+              width: 49.95%;
+            }
+            .rwd-example .ui-block-b p {
+              font-size: .8em;
+            }
+            .rwd-example > div + div .ui-body {
+                border-top-width: 1px;
+            }
+            .rwd-example > div:first-child .ui-body {
+                border-bottom-width: 0;
+            }
+            .rwd-example > div:last-child .ui-body {
+                border-left-width: 0;
+            }
+        }
+        /* 2nd breakpoint - Float all, 50/25/25 */
+        @media all and (min-width: 55em) {
+            .rwd-example .ui-body {
+               min-height: 18em;
+            }
+            .rwd-example .ui-block-a,
+             .rwd-example .ui-block-b{
+              float: left;
+              width: 49.95%;
+            }
+            .rwd-example > div:first-child .ui-body {
+                border-bottom-width: 1px;
+            }
+            .rwd-example > div + div .ui-body {
+                border-left-width: 0;
+            }
+        }
+        /* 3rd breakpoint - Bump up font size at very wide screens */
+        @media all and (min-width: 75em) {
+            .rwd-example .ui-body {
+              font-size: 125%;
+            }
+            .rwd-example .ui-block-a,
+             .rwd-example .ui-block-b{
+              float: left;
+              width: 49.95%;
+            }
+        }
+
+    </style>
+
+</head>
+<body>
+
+<!--->page 1<---->
+	 <div data-role="page" id=page1>
+	 <div data-role="header">
+	 	<h1>KALKULATOR</h1>
+	 </div>
+	     <div data-role="content">
+	     <input type="text" data-mini="true" id=angka placeholder="masukkan angka">
+	     <input type="text" data-mini="true" id=angka2 placeholder="masukkan pangkatnya">
+	     <input type="text" data-mini="true" id=hasil placeholder="hasil">
+	     <button class="ui-btn ui-btn-mini" onclick="raisePower()">Pangkat </button>
+	     <br>
+	     <input type="text" data-mini="true" id=angkaf placeholder="masukkan angka">
+	     <input type="text" data-mini="true" id=hasilf placeholder="hasil">
+	     <button class="ui-btn ui-btn-mini" onclick="faktorial()">Factorial </button>
+	     </div>
+	     <div data-role="footer">
+		    <label for="select-choice-0" id="select">MENU:</label>
+		    <select name="select-choice-0" class="target">
+			    <option value="#page1" selected>Page 1</option>
+			    <option value="#page2">Page 2</option>
+			    <option value="#page3">Page 3</option>
+		 	</select>
+	     </div>
+	 </div>
+
+<!--->page 2<---->
+	<div data-role="page" id=page2>
+		<div data-role="header">
+			<h1>RGB</h1>
+		</div>
+		<div data-role="content">
+			<form>
+				<h4>COLOR CODE: </h4>
+				<input type="text" name="rgb" id="rgb" />
+				<button class="ui-btn ui-mini" onclick="rgb()">submit</button>
+				<br><input type="text" id="ha1" name="ha1" value="H E L L O W O R L D">
+			</form>
+		</div>
+		<div data-role="footer">
+			<label for="select-choice-0" id="select">MENU:</label>
+			<select name="select-choice-0" class="target">
+				<option value="#page1">Page 1</option>
+				<option value="#page2" selected>Page 2</option>
+				<option value="#page3">Page 3</option>
+			</select>
+		</div>
+	</div>
+
+<!--->page 3<---->
+	 <div data-role="page" id=page3>
+	 	<div data-role="header">
+	 		<h1>RANGKUMAN</h1>
+	 	</div>
+	 	<div data-role="content">
+
+	 		<form>
+			    <label for="slider-1">sepanjang apa halaman inii? :</label>
+			    <input type="range" name="slider-1" id="slider-1" min="0" max="100" value="50">
+			</form>
+	 		<button class="show-page-loading-msg" data-textonly="true" data-textvisible="true" data-msgtext="mohon tunggu" data-inline="true">biar ngeload</button>
+			<button class="hide-page-loading-msg" data-inline="true" data-icon="delete">biar tidak menunggu</button>
+
+	 		<a href="#popupBasic" data-rel="popup" class="ui-btn ui-corner-all ui-shadow ui-btn-inline" data-transition="pop">pop m(i)e</a>
+			<div data-role="popup" id="popupBasic">
+				<p>RANGKUMAN HEHE</p>
+			</div>
+	 		<a href="#mypanel" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-btn-mini">see panel</a>
+	 		<div class="rwd-example">
+			    <!-- Lead story block -->
+			    <div class="ui-block-a">
+			        <div class="ui-body ui-body-d">
+			            <h2>GIT COMMANDS PART I.</h2>
+			            <p>	Git init -> start git<br>
+							Git status -> cek status project<br>
+							Git add -> masukin file ke staging area(?), dari computer masuk ke rep local, jadi masih bisa diubah<br>
+							Git commit -> ngubah/ngelakuin sesuatu(?), kalo udah commit dia semacem sudah final, siap masuk github. Kalo udah commit udah gabisa diubah lagi soalnya udah masuk stage area, terus di push ke githubnya<br>
+							Kalo add something, pake tanda petik (“…” ato ‘…’)<br>
+							Git log -> semacem history<br>
+							Git remote add -> masukin rep local ke server<br>
+							Origin -> sefolder masuk ke github<br>
+							Push -> cuman 1 file aja<br>
+						</p>
+			        </div>
+			    </div>
+			    <!-- secondary story block #1 -->
+			    <div class="ui-block-b">
+			        <div class="ui-body ui-body-d">
+			            <h4>PART II.</h4>
+			            <p>	T-u -> parameter<br>
+							-m -> message<br>
+							Pull -> nyamain rep local sama yg di server<br>
+							Git diff head -> cek kalo ada yg berubah/ beda dari commit <br>terakhir -> nunjukin kodingan<br>
+							Git diff --staged -> cek posisi file yg diubah<br>
+							Git Reset ->meng-unstage / ngeluarin file dari stage area -> ngembaliin ke commit terakhir<br>
+						</p>
+			        </div>
+			    </div>
+			<div data-role="panel" id="mypanel">
+	            <p>	BOOM. PART III <br>
+					Git checkout -- (nama file) -> ngembaliin ke head<br>
+					Git branch clean_up-> bikin branch namanya clean_up
+					Kita bisa switch branch pake git checkout (nama branch)<br>
+					Git rm -> hapus file dari disk + ngestage penghapusan file itu<br>
+					Git merge (nama branch) -> menggabungkan branch ke master branch<br>
+					Git branch -d (nama branch) -> hapus branch<br>
+				</p>
+			</div>
+			<table data-role="table" id="table-column-toggle" data-mode="columntoggle" class="ui-responsive table-stroke">
+			     <thead>
+			       <tr>
+			         <th data-priority="2">Rank</th>
+			         <th>Movie Title</th>
+			         <th data-priority="3">Year</th>
+			         <th data-priority="1"><abbr title="Rotten Tomato Rating">Rating</abbr></th>
+			         <th data-priority="5">Reviews</th>
+			       </tr>
+			     </thead>
+			     <tbody>
+			       <tr>
+			         <th>1</th>
+			         <td><a href="http://en.wikipedia.org/wiki/Citizen_Kane" data-rel="external">Citizen Kane</a></td>
+			         <td>1941</td>
+			         <td>100%</td>
+			         <td>74</td>
+			       </tr>
+			       <tr>
+			         <th>2</th>
+			         <td><a href="http://en.wikipedia.org/wiki/Casablanca_(film)" data-rel="external">Casablanca</a></td>
+			         <td>1942</td>
+			         <td>97%</td>
+			         <td>64</td>
+			       </tr>
+			       <tr>
+			         <th>3</th>
+			         <td><a href="http://en.wikipedia.org/wiki/The_Godfather" data-rel="external">The Godfather</a></td>
+			         <td>1972</td>
+			         <td>97%</td>
+			         <td>87</td>
+			       </tr>
+			    </tbody>
+			</table>
+		</div>
+	 	<div data-role="footer">
+		    <label for="select-choice-0" id="select">MENU:</label>
+		    <select name="select-choice-0" class="target">
+			    <option value="#page1">Page 1</option>
+			    <option value="#page2">Page 2</option>
+			    <option value="#page3" selected>Page 3</option>
+		 	</select>
+	    </div>
+	</div>
